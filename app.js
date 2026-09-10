@@ -1,13 +1,20 @@
 class Person {
   static color = "blue static";
 
+  #num = 2;
+
   constructor(name, age) {
     this.name = name;
     this.age = age;
   }
 
-  gitInfo() {
-    return `my name is ${this.name} && ${this.age} && color ${this.color} && ${Person.color}`;
+  #gitInfo() {
+    return `my name is ${this.name} && ${this.age} && color ${this.color} && ${Person.color} `;
+  }
+
+  gitInfoUpdate() {
+    this.#num = 4;
+    return this.#gitInfo() + `&& number private ${this.#num}`;
   }
 
   static sayHello() {
@@ -42,4 +49,4 @@ const student = new Student("Amir.FFE", 17, "red");
 
 person.isAge = 25;
 
-console.log(person.age);
+console.log(person.gitInfoUpdate());
