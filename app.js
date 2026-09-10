@@ -13,6 +13,17 @@ class Person {
   static sayHello() {
     return "hello would";
   }
+
+  get logName() {
+    return `name: ${this.name}`;
+  }
+
+  set isAge(age) {
+    if (this.age <= 21) {
+      throw new Error();
+    }
+    this.age = age;
+  }
 }
 
 class Student extends Person {
@@ -29,4 +40,6 @@ class Student extends Person {
 const person = new Person("Amir.FF", 22);
 const student = new Student("Amir.FFE", 17, "red");
 
-console.log(Person.sayHello());
+person.isAge = 25;
+
+console.log(person.age);
