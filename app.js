@@ -12,9 +12,12 @@ class Person {
     return `my name is ${this.name} && ${this.age} && color ${this.color} && ${Person.color} `;
   }
 
-  gitInfoUpdate() {
+  gitInfoUpdate(car = "pride", model = 98) {
     this.#num = 4;
-    return this.#gitInfo() + `&& number private ${this.#num}`;
+    return (
+      this.#gitInfo() +
+      `&& number private ${this.#num} && car: ${car}, model: ${model}`
+    );
   }
 
   static sayHello() {
@@ -49,4 +52,9 @@ const student = new Student("Amir.FFE", 17, "red");
 
 person.isAge = 25;
 
-console.log(person.gitInfoUpdate());
+const pInfo = person.gitInfoUpdate;
+const newFac = person.gitInfoUpdate.bind(person);
+
+console.log(pInfo.call(person, "sarina", 95));
+console.log(pInfo.apply(person, ["tiba", 99]));
+console.log(newFac("samand", 90));
