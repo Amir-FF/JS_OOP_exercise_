@@ -3,9 +3,11 @@ class Person {
 
   #num = 2;
 
-  constructor(name, age) {
+  constructor(name, age, number = 0, count = 1) {
     this.name = name;
     this.age = age;
+    this.number = number;
+    this.count = count;
   }
 
   #gitInfo() {
@@ -14,10 +16,28 @@ class Person {
 
   gitInfoUpdate(car = "pride", model = 98) {
     this.#num = 4;
-    return (
+
+    console.log(
       this.#gitInfo() +
-      `&& number private ${this.#num} && car: ${car}, model: ${model}`
+        `&& number private ${this.#num} && car: ${car}, model: ${model}`,
     );
+  }
+
+  // timer() {
+  //   setInterval(
+  //     function () {
+  //       console.log(this.number);
+
+  //       this.number += this.count;
+  //     }.bind(this),
+  //     1000,
+  //   );
+  // }
+
+  timer() {
+    setTimeout(() => {
+      console.log(this.number);
+    }, 1000);
   }
 
   static sayHello() {
@@ -52,9 +72,7 @@ const student = new Student("Amir.FFE", 17, "red");
 
 person.isAge = 25;
 
-const pInfo = person.gitInfoUpdate;
-const newFac = person.gitInfoUpdate.bind(person);
+const btn = document.getElementById("btn");
+btn.onclick = person.gitInfoUpdate.bind(person, "sarina", 95);
 
-console.log(pInfo.call(person, "sarina", 95));
-console.log(pInfo.apply(person, ["tiba", 99]));
-console.log(newFac("samand", 90));
+person.timer();
