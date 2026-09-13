@@ -23,17 +23,6 @@ class Person {
     );
   }
 
-  // timer() {
-  //   setInterval(
-  //     function () {
-  //       console.log(this.number);
-
-  //       this.number += this.count;
-  //     }.bind(this),
-  //     1000,
-  //   );
-  // }
-
   timer() {
     setTimeout(() => {
       console.log(this.number);
@@ -67,12 +56,13 @@ class Student extends Person {
   }
 }
 
-const person = new Person("Amir.FF", 22);
-const student = new Student("Amir.FFE", 17, "red");
+const myobj = {
+  color: "red",
+};
 
-person.isAge = 25;
+const person = Object.create(myobj);
+person.name = "Amir";
+person.age = 22;
 
-const btn = document.getElementById("btn");
-btn.onclick = person.gitInfoUpdate.bind(person, "sarina", 95);
-
-person.timer();
+console.log(Object.getPrototypeOf(person));
+console.log(Object.setPrototypeOf(person, { color: "blue" }));
